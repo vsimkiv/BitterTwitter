@@ -5,9 +5,16 @@
 
 <body>
 <div>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf_token}}"/>
+        <input type="submit" value="Sign out">
+    </form>
+</div>
+<div>
     <form method="post">
         <input type="text" name="text" placeholder="Message">
         <input type="text" name="tag" placeholder="Tag">
+        <input type="hidden" name="_csrf" value="{{_csrf_token}}"/>
         <button type="submit">Share</button>
     </form>
 </div>
