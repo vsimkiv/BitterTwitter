@@ -1,0 +1,25 @@
+<html>
+<head>
+
+</head>
+
+<body>
+<div>
+    <form method="post">
+        <input type="text" name="text" placeholder="Message">
+        <input type="text" name="tag" placeholder="Tag">
+        <button type="submit">Share</button>
+    </form>
+</div>
+<div>
+    List of messages
+</div>
+{{#messages}}
+    <div>
+        <b>{{id}}</b>
+        <span>{{text}}</span>
+        <i>{{tag}}</i>
+    </div>
+{{/messages}}
+</body>
+</html>
