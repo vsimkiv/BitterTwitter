@@ -6,11 +6,11 @@ import com.edu.springboot.bittertwitter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collections;
-import java.util.Map;
 
 @Controller
 public class SignUpController {
@@ -27,11 +27,11 @@ public class SignUpController {
     }
 
     @PostMapping("/sign-up")
-    public String addUser(User user, Map<String, Object> model) {
+    public String addUser(User user, Model model) {
         UserDetails userFromDB = userService.loadUserByUsername(user.getUsername());
 
         if (userFromDB != null) {
-            model.put("info", "User with such username already exists");
+            model.addAttribute("info", "User with such username already exists");
             return "/sign-up";
         }
 

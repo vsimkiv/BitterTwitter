@@ -2,7 +2,6 @@
 
 <@common.page>
     List of users
-
 <table>
     <thead>
     <tr>
@@ -15,7 +14,7 @@
     <#list users as u>
     <tr>
         <td>${u.username}</td>
-        <td><#list u.roles as r>${r}<#sep>, </#list></td>
+        <td><#list u.roles as ur>${ur}<#sep>, </#list></td>
         <td><a href="/user/${u.id}">Edit user</a></td>
     </tr>
     </#list>

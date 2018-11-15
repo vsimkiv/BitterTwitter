@@ -4,6 +4,7 @@
 <@common.page>
 <div>
     <@sign.sign_out />
+    <span><a href="/user">User list</a></span>
 </div>
 
 <div>
