@@ -8,9 +8,10 @@
 </div>
 
 <div>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <input type="text" name="text" placeholder="Message">
         <input type="text" name="tag" placeholder="Tag">
+        <input type="file" name="file">
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         <button type="submit">Share</button>
     </form>
@@ -23,6 +24,11 @@
         <span>${m.text}</span>
         <i>${m.tag}</i>
         <strong>${m.authorName}</strong>
+        <div>
+            <#if m.filename??>
+                <img src="/img/${m.filename}">
+            </#if>
+        </div>
     </div>
     <#else>
     No messages

@@ -3,6 +3,6 @@
 
 <@common.page>
 Add new user:
-    ${info}
+    ${info?ifExists}
     <@sign.sign_in "/sign-up" />
 </@common.page>
