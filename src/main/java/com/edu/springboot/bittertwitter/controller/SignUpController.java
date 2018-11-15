@@ -13,32 +13,32 @@ import java.util.Collections;
 import java.util.Map;
 
 @Controller
-public class RegistrationController {
+public class SignUpController {
     private final UserService userService;
 
     @Autowired
-    public RegistrationController(UserService userService) {
+    public SignUpController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping("/registration")
-    public String showRegistration() {
-        return "registration";
+    @GetMapping("/sign-up")
+    public String showSignUp() {
+        return "sign-up";
     }
 
-    @PostMapping("/registration")
-    public String registerUser(User user, Map<String, Object> model) {
+    @PostMapping("/sign-up")
+    public String addUser(User user, Map<String, Object> model) {
         UserDetails userFromDB = userService.loadUserByUsername(user.getUsername());
 
         if (userFromDB != null) {
             model.put("info", "User with such username already exists");
-            return "/registration";
+            return "/sign-up";
         }
 
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         userService.save(user);
 
-        return "redirect:/login";
+        return "redirect:/sign-in";
     }
 }
