@@ -1,8 +1,8 @@
 <#import "parts/common.ftl" as common>
 
 <@common.page>
+<h5>Hello, Guest</h5>
 <div>
-    Hello, user
+    This is a primitive clone of Twitter based on SpringBoot, FreeMarker and Bootstap
 </div>
-    <a href="/main">Main page</a>
 </@common.page>
