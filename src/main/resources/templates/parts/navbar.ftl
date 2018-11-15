@@ -1,4 +1,5 @@
 <#include "security.ftl">
+<#import "sign.ftl" as sign>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">BitterTwitter</a>
@@ -21,9 +22,9 @@
             </li>
             </#if>
         </ul>
-
-        <div class="navbar-text">
+        <div class="navbar-text mr-2">
         ${name}
         </div>
+        <@sign.sign_out />
     </div>
 </nav>

@@ -2,7 +2,6 @@
 <#import "parts/sign.ftl" as sign>
 
 <@common.page>
-Add new user:
-    ${info?ifExists}
-    <@sign.sign_in "/sign-up" />
+    ${info!}
+    <@sign.sign_in "/sign-up" false />
 </@common.page>

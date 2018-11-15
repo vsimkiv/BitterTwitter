@@ -1,36 +1,53 @@
 <#import "parts/common.ftl" as common>
-<#import "parts/sign.ftl" as sign>
+
 
 <@common.page>
-<div>
-    <@sign.sign_out />
-    <span><a href="/user">User list</a></span>
+
+<a class="btn btn-primary" data-toggle="collapse" href="#newMessage" role="button" aria-expanded="false">
+    New message
+</a>
+
+<div class="collapse" id="newMessage">
+    <div class="form-group mt-2">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="text" class="form-control" name="text" placeholder="Message">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="tag" placeholder="Tag">
+            </div>
+            <div class="custom-file mt-2">
+                <input type="file" name="file" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Share</button>
+            </div>
+        </form>
+    </div>
 </div>
 
-<div>
-    <form method="post" enctype="multipart/form-data">
-        <input type="text" name="text" placeholder="Message">
-        <input type="text" name="tag" placeholder="Tag">
-        <input type="file" name="file">
-        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <button type="submit">Share</button>
-    </form>
-</div>
-<div>
+<div class="card-columns">
     <#list messages as m>
-</div>
-    <div>
-        <b>${m.id}</b>
-        <span>${m.text}</span>
-        <i>${m.tag}</i>
-        <strong>${m.authorName}</strong>
-        <div>
+        <div class="card my-2">
+            <div class="card-img-top">
             <#if m.filename??>
                 <img src="/img/${m.filename}">
             </#if>
+            </div>
+            <div class="card-body m-1">
+                <span>${m.text}</span>
+                <span><i>${m.tag}</i></span>
+            </div>
+
+            <div class="card-footer text-muted">
+                ${m.authorName}
+            </div>
         </div>
-    </div>
     <#else>
     No messages
     </#list>
+</div>
+
 </@common.page>

@@ -1,9 +1,28 @@
-<#macro sign_in path>
+<#macro sign_in path is_sign_in_form>
 <form action="${path}" method="post">
-    <div><label>Username: <input type="text" name="username"/></label></div>
-    <div><label>Password: <input type="password" name="password"/></label></div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Username:</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" name="username" placeholder="Username"/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Password:</label>
+        <div class="col-sm-4">
+            <input type="password" class="form-control" name="password" placeholder="Password"/>
+        </div>
+    </div>
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-    <div><input type="submit" value="Sign in"/></div>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">
+                <#if is_sign_in_form>Sign in<#else>Sign up</#if>
+            </button>
+        </div>
+        <#if is_sign_in_form>
+        <a href="/sign-up">Add new user</a>
+        </#if>
+    </div>
 </form>
 </#macro>
 
@@ -11,7 +30,9 @@
 <div>
     <form action="/logout" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <input type="submit" value="Sign out">
+        <button type="submit" class="btn btn-primary">
+            Sign out
+        </button>
     </form>
 </div>
 </#macro>

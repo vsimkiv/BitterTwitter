@@ -3,6 +3,7 @@
 <@common.page>
     User editor
 <form action="/user" method="post">
+    <label>Username:</label>
     <input type="text" name="username" value="${user.username}"/>
     <#list roles as r>
       <div>
