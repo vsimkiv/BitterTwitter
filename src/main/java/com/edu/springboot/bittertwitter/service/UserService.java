@@ -21,6 +21,10 @@ public class UserService implements UserDetailsService {
         return userRepo.save(user);
     }
 
+    public Iterable<User> loadAllUsers (){
+        return userRepo.findAll();
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepo.findByUsername(username);
