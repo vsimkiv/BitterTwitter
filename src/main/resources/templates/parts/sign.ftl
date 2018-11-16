@@ -12,6 +12,14 @@
             <input type="password" class="form-control" name="password" placeholder="Password"/>
         </div>
     </div>
+    <#if !is_sign_in_form>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Email:</label>
+        <div class="col-sm-4">
+            <input type="email" class="form-control" name="email" placeholder="example@example.com"/>
+        </div>
+    </div>
+    </#if>
     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
     <div class="form-group row">
         <div class="col-sm-10">

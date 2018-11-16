@@ -2,5 +2,6 @@
 <#import "parts/sign.ftl" as sign>
 
 <@common.page>
-<@sign.sign_in "/sign-in" true />
+    ${info!}
+    <@sign.sign_in "/sign-in" true />
 </@common.page>
